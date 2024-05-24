@@ -1,0 +1,72 @@
+<resources>
+    
+    
+    <!-- Use these styles or as per the requirement ass new style -->
+    <style name="verticleblock">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+
+    <style name="horizontalblock">
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="wrapscreen">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="fillscreen">
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+
+    <style name="CustomProgressBar" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/custom_progress_bar_horizontal</item>
+        <item name="android:minHeight">5dp</item>
+        <item name="android:maxHeight">10dp</item>
+    </style>
+
+    <style name="fragment_root_layout_style">
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@color/Beige</item>
+    </style>
+
+      <style name="AppTheme" parent="AppTheme.Base" />
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/crs_primary_color</item>
+        <item name="colorPrimaryDark">@color/crs_primary_status_bar_color</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="HeaderedViewpagerTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <!--<item name="homeAsUpIndicator">@drawable/abc_ic_ab_back_holo_dark</item>-->
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="android:actionBarStyle">@style/ActionBarStyle</item>
+        <item name="android:actionMenuTextAppearance">@style/OptionMenuTextStyle</item>
+    </style>
+
+    <style name="ActionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="colorPrimary">@android:color/holo_blue_light</item>
+
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:background">#FFFFFF</item>
+    </style>
+
+    <style name="OptionMenuTextStyle" parent="android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textSize">18sp</item>
+
+    </style>
+
+</resources>

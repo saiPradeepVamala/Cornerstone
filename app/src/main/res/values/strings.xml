@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cornerstone Hospice</string>
+    <string name="app_shortcut_name">Cornerstone</string>
+    <string name="hello_world">Hello world</string>
+    <string name="action_settings">Settings</string>
+    
+    
+    <!-- WE common texts -->
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="splash_loading_message">Loading</string>
+    <string name="splash_no_internet_shutting_down_txt">No internet connection. Shutting down.</string>
+    <string name="cannot_process_requst">Cannot process request, please try again</string>
+    <string name="please_wait">Please wait.</string>
+    <string name="no_email_launcher_defined">There are no email clients installed.</string>
+    <string name="yes_button">Yes</string>
+    <string name="no_button">No</string>
+
+    <!--Dashboard strings -->
+    <string name="dashboard_make_a_referal_txt">Make a Referral</string>
+    <string name="dashboard_criteria_txt">Criteria for Hospice</string>
+    <string name="dashboard_bmi_cal_txt">BMI Calculator</string>
+    <string name="dashboard_dashboard_title_txt">Cornerstone Hospice</string>
+
+    <!-- Referral Activity -->
+    <string name="make_referral_patient_information">Patient Information </string>
+    <string name="make_referral_name_hint">Name</string>
+    <string name="make_referral_phone_hint">Phone</string>
+    <string name="make_referral_diagnosis_hint">Diagnosis (If known)</string>
+    <string name="make_referral_relation_hint">Relation with patient</string>
+    <string name="make_referral_your_information">Your Information  </string>
+    <string name="make_referral_call_to_patient_text">Have you told the patient we might be calling?  </string>
+    <string name="make_referral_call_to_patient_off">Off</string>
+    <string name="make_referral_submit_title">Referral Submit</string>
+    <string name="make_referral_submit_message">Do you want to submit?</string>
+    <string name="make_referral_success">Refferal is submitted successfully!</string>
+    <string name="makereferral_notes_hint">Notes</string>
+    <string name="makereferral_please_check_the_mandatory_fileds">Please fill mandatory fileds</string>
+    <string name="makereferral_submitting_referral">Submitting referral</string>
+
+    <!-- BMI Screen strings -->
+    <string name="bmi_screen_title">BMI Calculator</string>
+    <string name="bmi_heighet_in_feets_txt">Height (in feet)  </string>
+    <string name="bmi_weight_in_pounds_txt">Weight (in pounds)  </string>
+    <string name="title_activity_criteria_list">Criteria For Hospice</string>
+    <string name="criteria_screen_title">Criteria for Hospice</string>
+    <string name="bmi_cal_button_txt">Calculate BMI</string>
+
+    <!-- Meld tab strings -->
+    <string name="meld_screen_title">MELD Calculator</string>
+    <string name="meld_creatinine">Creatinine (mg/dl) </string>
+    <string name="meld_bilirubin">Bilirubin (mg/dl) </string>
+    <string name="meld_inr">INR </string>
+    <string name="meld_dialysis_past_week">Dialysis at least twice in past week </string>
+    <string name="meld_cal_button_txt">Calculate MELD</string>
+    <string name="meld_reset_button_txt">Reset</string>
+    <string name="meld_heading">Model for End-Stage Liver Disease [MELD]</string>
+
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="contact_us_fragment">Contact us fragment</string>
+    <string name="refer_fragment">Refer fragment</string>
+    <string name="bmi_fragment">BMI fragment</string>
+    <string name="criteria_fragment">Criteria fragment</string>
+    <string name="title_activity_preview">PreviewActivity</string>
+
+
+    <!-- Preview avtivity -->
+    <string name="preview_title">Preview</string>
+    <string name="title_activity_take_picture">TakePictureActivity</string>
+    <string name="progress_dialog_message">Sending Email</string>
+    <string name="meld_information">In interpreting the MELD Score in hospitalized patients</string>
+
+    <!-- About us Screen-->
+    <string name="scales_screen_text"> </string>
+
+    <string-array name="titles">
+        <item>REFER</item>
+        <item>CRITERIA</item>
+        <item>TOOLS</item>
+        <item>ABOUT US</item>
+        <item>CONTACT US</item>
+    </string-array>
+
+    <array name="icons">
+        <item>@drawable/ic_n_refer</item>
+        <item>@drawable/ic_n_criteria</item>
+        <item>@drawable/ic_n_tools</item>
+        <item>@drawable/ic_n_contact</item>
+        <item>@drawable/ic_s_about</item>
+    </array>
+
+    <array name="selected_icons">
+        <item>@drawable/ic_s_refer</item>
+        <item>@drawable/ic_s_criteria</item>
+        <item>@drawable/ic_s_tools</item>
+        <item>@drawable/ic_s_contact</item>
+        <item>@drawable/ic_s_about</item>
+    </array>
+    
+    <!--Splash screen -->
+    <string name="Patient_assessment_text_one">Patient assessment</string>
+    <string name="referral_text">and referral</string>
+    <string name="refer_image_capture_label">Would you like to get the Patient Face-sheet ?</string>
+    <string name="attach_a_face_sheet">Would you like to attach a face sheet?</string>
+
+    <!--Main Activity Button names -->
+    <string name="referral_button_text">REFERRAL</string>
+    <string name="criteria_button_text">CRITERIA</string>
+    <string name="tools_button_text">TOOLS</string>
+    <string name="about_us_button_text">ABOUT US</string>
+    <string name="cornerstone_referral_email_subject">Cornerstone referral</string>
+    <string name="facebook">FaceBook</string>
+    <string name="email">Email</string>
+    <string name="about_us">About US</string>
+    <string name="tools">Tools</string>
+    <string name="criteria">Criteria</string>
+    <string name="referral">Referral</string>
+    <string name="title">Title</string>
+    <string name="call">Call</string>
+
+
+</resources>

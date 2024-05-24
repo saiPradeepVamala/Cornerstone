@@ -1,0 +1,200 @@
+{
+  "criteria_results": [
+    {
+      "criterionTitle": "General Guidelines",
+      "criterion": [
+        {
+          "indicators_subtitle": "",
+          "indication": [
+            "Life limiting illness with a prognosis of less than 6 months",
+            "Dependence in 3 of 6 ADL’s",
+            "Palliative Performance Scale of <60%",
+            ">10% weight loss over last 6 months",
+            "Multiple hospitalizations or ER visits",
+            "Decreased tolerance to physical activity",
+            "Decrease cognitive ability",
+            "Other comorbid conditions"
+          ]
+        }
+      ]
+    },
+    {
+      "criterionTitle": "Alzheimer's and Dementia",
+      "criterion": [
+        {
+          "indicators_subtitle": "FAST Score of 7",
+          "indication": [
+            "Functional assessment score >7",
+            "Unable to ambulate/dress or bathe without assistance",
+            "Difficulty swallowing or refusing to eat",
+            "Urinary and fecal incontinence, intermittent or constant",
+            "No meaningful verbal communication",
+            "Complications such as Aspiration Pneumonia, UTI, Septicemia, recurrent fevers",
+            "Decubitus ulcers stage 3 or 4",
+            ">10% weight loss over 6 months"
+          ]
+        },
+        {
+          "indicators_subtitle": "Co-morbidities",
+          "indication": [
+            "Aspiration",
+            "Pneumonia",
+            "Urosepsis",
+            "Decubiti"
+          ]
+        }
+      ]
+    },
+    {
+      "criterionTitle": "Amyotrophic Lateral Sclerosis (ALS)",
+      "criterion": [
+        {
+          "indicators_subtitle": "",
+          "indication": [
+            "Needs assistance with activities of daily living",
+            "Difficulty swallowing",
+            "Declines artificial nutrition",
+            "Dyspnea at rest",
+            "Declines ventilator support",
+            "May be experiencing complications such as aspiration pneumonia, sepsis, URI, or recurrent fever after antibiotic therapy"
+          ]
+        }
+      ]
+    },
+    {
+      "criterionTitle": "Cancer",
+      "criterion": [
+        {
+          "indicators_subtitle": "",
+          "indication": [
+            "Metastatic disease or widespread invasion",
+            "Increased tumor mass",
+            "Recurrence of disease",
+            "Failure of curative chemo/radiation",
+            "Patient with an ECOG greater than 2",
+            ">10% weight loss over 6 months",
+            "Serum Albumin <3gm/dl",
+            "Increased weakness",
+            "May be experiencing dysphagia",
+            "Progressive decline in the ability to perform ADL’s independently"
+          ]
+        }
+      ]
+    },
+    {
+      "criterionTitle": "Cardiac Disease",
+      "criterion": [
+        {
+          "indicators_subtitle": "",
+          "indication": [
+            "Optimally treated with diuretics and vasodilators",
+            "Recurrent CHF",
+            "NYHA III or IV",
+            "Treatment-resistant arrhythmias",
+            "History of cardiac arrest or resuscitation",
+            "History of unexplained syncope",
+            "Cardiogenic embolic disease (e.g.CVA)",
+            "Dyspnea and/or angina at rest or with minimal exertion",
+            "Persistent resting tachycardia",
+            "Comorbid factors that are contributing to the patient’s overall decline"
+          ]
+        }
+      ]
+    },
+    {
+      "criterionTitle": "HIV/AIDS",
+      "criterion": [
+        {
+          "indicators_subtitle": "",
+          "indication": [
+            "CD4 level <25 cells/ml or Persistent viral load of >100,000 copies/ml",
+            "Unresponsive or noncompliant with antiretrovirals",
+            "Palliative Performance Scale of <60%",
+            "May be experiencing one or more of the following:",
+            "CNS Lymphoma",
+            "MAC bacteremia despite treatment",
+            "Progressive leukoencephalopathy",
+            "Systemic lymphoma",
+            "Visceral Kaposi’s sarcoma",
+            "Renal failure",
+            "Cryptosporidium infection",
+            "Toxoplasmosis unresponsive to therapy"
+          ]
+        }
+      ]
+    },
+    {
+      "criterionTitle": "Liver Disease",
+      "criterion": [
+        {
+          "indicators_subtitle": "",
+          "indication": [
+            "Prothrombin time INR >1.5 or",
+            "Serum Albumin < 3gm/dl",
+            "May have one of the following:",
+            "Spontaneous Bacterial Peritonitis",
+            "Hepatorenal syndrome",
+            "Ascites despite maximum therapy",
+            "Recurrent variceal bleeding",
+            "Hepatic encephalopathy refractory to treatment",
+            "May be experiencing muscle wasting, progressive malnutrition, continued alcoholism, Hep- B positive, Hep -C unresponsive to treatment"
+          ]
+        }
+      ]
+    },
+    {
+      "criterionTitle": "Pulmonary Disease - COPD",
+      "criterion": [
+        {
+          "indicators_subtitle": "",
+          "indication": [
+            "Dyspnea at rest or with minimal exertion",
+            "Continuous oxygen therapy",
+            ">10% weight loss over 6 months",
+            "Recurrent pulmonary infections (bronchitis or pneumonia)",
+            "Cor Pulmonale",
+            "FEV1 <30% post broncodilator",
+            "PO2<55 or O2 sat <88% (on room air)",
+            "Persistent resting tachycardia",
+            "Progressive decline in the ability to perform ADL’s independently"
+          ]
+        }
+      ]
+    },
+    {
+      "criterionTitle": "Renal Disease",
+      "criterion": [
+        {
+          "indicators_subtitle": "",
+          "indication": [
+            "Creatinine Clearance <10cc/min (<15 if diabetic)",
+            "Declines dialysis or has made the decision to discontinue",
+            "Serum creatinine >8.0mg/dl",
+            "May be experiencing intractable hyperkalemia >7 despite treatment, uremic pericarditis, hepatorenal syndrome, or intractable fluid overload despite treatment"
+          ]
+        }
+      ]
+    },
+    {
+      "criterionTitle": "Cerebrovascular Accident (CVA)",
+      "criterion": [
+        {
+          "indicators_subtitle": "",
+          "indication": [
+            "History of Coronary Artery Disease, Cardiovascular Disease or Peripheral Arterial Disease",
+            "History of TIA’s or unexplained syncope",
+            "Dysphasic or complications with meaningful communication",
+            "Dysphagia and unable to maintain hydration and caloric intake",
+            "Decreased or impaired mobility",
+            ">10% weight loss over 6 months",
+            "Palliative Performance Scale of <60%",
+            "Serum Albumin <3gm/dl",
+            "Multiple hospitalizations or ER visits",
+            "Acute CVA or Coma",
+            "Comorbid factors that are contributing to the patient’s overall decline"
+          ]
+        }
+      ]
+    }
+  ]
+}

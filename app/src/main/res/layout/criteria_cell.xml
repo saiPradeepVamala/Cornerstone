@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/criteria_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/criteria_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSizeExtraLarge"
+        android:text="CHECK"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/criterion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/criteria_heading"
+        android:lineSpacingMultiplier="1.2"
+        android:paddingTop="8dp"
+        android:text="this"
+        android:singleLine="false"
+        android:textSize="@dimen/textSizeLarge" />
+
+</RelativeLayout>

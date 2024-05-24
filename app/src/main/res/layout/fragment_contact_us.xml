@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/body_height">
+        <LinearLayout
+            android:id="@+id/buttons_layout"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/email_btn"
+            android:layout_width="@dimen/cornerstone_calculate_submit_buttons"
+            android:layout_height="@dimen/md_button_height"
+            android:layout_marginBottom="@dimen/stdGutterSizeMed"
+            android:layout_marginLeft="@dimen/stdGutterSizeMed"
+            android:layout_marginRight="@dimen/stdGutterSizeMed"
+            android:background="@color/cornerstone_blue4"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/cornerstone_blue4"
+                android:paddingRight="@dimen/marginSizeMicroPlusPlus"
+                android:src="@drawable/ic_email" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/cornerstone_white"
+                android:textSize="@dimen/textSizeBtnLabel" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/phone_btn"
+            android:layout_width="@dimen/cornerstone_calculate_submit_buttons"
+            android:layout_height="@dimen/md_button_height"
+            android:layout_above="@id/email_btn"
+            android:layout_marginBottom="@dimen/stdGutterSizeMed"
+            android:layout_marginLeft="@dimen/stdGutterSizeMed"
+            android:layout_marginRight="@dimen/stdGutterSizeMed"
+            android:background="@color/cornerstone_blue4"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/email_btn"
+                android:background="@color/cornerstone_blue4"
+                android:paddingRight="@dimen/marginSizeMicroPlusPlus"
+                android:src="@drawable/ic_phone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textColor="@color/cornerstone_white"
+                android:textSize="@dimen/textSizeBtnLabel" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/facebook_btn"
+                android:layout_width="@dimen/cornerstone_calculate_submit_buttons"
+                android:layout_height="@dimen/md_button_height"
+                android:layout_above="@id/email_btn"
+                android:layout_marginBottom="@dimen/stdGutterSizeMed"
+                android:layout_marginLeft="@dimen/stdGutterSizeMed"
+                android:layout_marginRight="@dimen/stdGutterSizeMed"
+                android:onClick="onFacebookClick"
+                android:background="@color/facebook_blue"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/email_btn"
+                    android:background="@color/facebook_blue"
+                    android:paddingRight="@dimen/marginSizeMicroPlusPlus"
+                    android:src="@drawable/ic_facebook" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Facebook"
+                    android:textColor="@color/cornerstone_white"
+                    android:textSize="@dimen/textSizeBtnLabel" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/buttons_layout"
+            android:layout_alignParentTop="true"
+            android:scaleType="center"
+            android:src="@drawable/cornerstone_logo" />
+    </RelativeLayout>
+
+</LinearLayout>

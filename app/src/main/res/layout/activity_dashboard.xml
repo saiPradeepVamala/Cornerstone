@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!--<include-->
+        <!--android:id="@+id/toolbar"-->
+        <!--layout="@layout/toolbar" />-->
+
+    <!--<android.support.v4.widget.DrawerLayout-->
+        <!--android:id="@+id/drawerLayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:fitsSystemWindows="true">-->
+
+            <!--<fragment-->
+            <!--android:id="@+id/side_menu"-->
+            <!--class="com.cornerstone.android.fragments.SideMenuListFragment"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/crs_primary_status_bar_color"-->
+            <!--android:layout_weight=".3"/>-->
+            <FrameLayout
+                android:id="@+id/target_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                 />
+
+            <!-- List of Actions (pages) -->
+            <!--<ListView-->
+                <!--android:id="@+id/navList"-->
+                <!--android:layout_width="280dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_below="@+id/profileBox"-->
+                <!--android:divider="@color/cornerstone_grey"-->
+                <!--android:dividerHeight="1dp"-->
+                <!--android:layout_gravity="left"-->
+                <!--android:choiceMode="singleChoice"-->
+                <!--android:background="@color/WhiteSmoke"/>-->
+
+    <!--</android.support.v4.widget.DrawerLayout>-->
+</RelativeLayout>

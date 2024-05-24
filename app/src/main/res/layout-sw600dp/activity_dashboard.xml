@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!--<include-->
+        <!--android:id="@+id/toolbar"-->
+        <!--layout="@layout/toolbar" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100">
+     <!--   <fragment
+            android:id="@+id/side_menu"
+            class="com.cornerstone.android.fragments.SideMenuListFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/crs_primary_status_bar_color"
+            android:layout_weight="@integer/side_menu_width_weight"/> -->
+        <FrameLayout
+            android:id="@+id/target_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="@integer/fragment_width_weight"/>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,167 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="item_width">192dp</dimen>
+    <dimen name="item_height">192dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+
+    <!-- Drawer width -->
+    <dimen name="drawer_width">260dp</dimen>
+    <dimen name="drawer_title_size">17dp</dimen>
+
+    <!-- List view dimentsion -->
+    <dimen name="list_item_height">48dp</dimen>
+    <dimen name="list_item_test_size">17sp</dimen>
+
+
+    <!--  Generic paddings -->
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_mid_medium">10dp</dimen>
+    <dimen name="horizaontal_line_thin">1dp</dimen>
+    <dimen name="padding_below_medium">5dp</dimen>
+
+    <!-- Action bar sizes -->
+    <dimen name="action_bar_height">56dp</dimen>
+
+
+    <!-- TextSizes -->
+    <dimen name="test_heading_1">20sp</dimen>
+
+    <!-- Ripple effect -->
+    <dimen name="rippleStrokeWidth">2dp</dimen>
+    <dimen name="rippleRadius">64dp</dimen>
+
+
+    <!-- Alert dialog sizes -->
+    <dimen name="alert_width">290dp</dimen>
+    <dimen name="common_circle_width">3dp</dimen>
+    <dimen name="progress_circle_radius">34dp</dimen>
+
+
+    <!--  deimension for MD -->
+    <!-- See http://www.google.com/design/spec/components/dialogs.html#dialogs-specs -->
+
+    <dimen name="md_dialog_frame_margin">24dp</dimen>
+    <dimen name="md_main_frame_margin">16dp</dimen>
+    <dimen name="md_title_margin_plainlist">8dp</dimen>
+
+    <!-- 64dp + 8dp (left and right insets) -->
+    <dimen name="md_button_min_width">72dp</dimen>
+
+    <!-- Above and below buttons, 36+12=48 for the height of the button frame -->
+    <dimen name="md_button_inset_vertical">6dp</dimen>
+    <dimen name="md_button_inset_horizontal">4dp</dimen>
+    <dimen name="md_button_padding_horizontal">8dp</dimen>
+    <dimen name="md_button_padding_vertical">4dp</dimen>
+
+    <dimen name="md_button_padding_horizontal_internalexternal">32dp</dimen>
+
+    <!-- 16dp - 4dp (inset) -->
+    <dimen name="md_button_padding_frame_side">12dp</dimen>
+    <dimen name="md_neutral_button_margin">12dp</dimen>
+
+    <dimen name="md_button_padding_frame_bottom">8dp</dimen>
+    <dimen name="md_button_height">48dp</dimen>
+
+    <dimen name="md_title_textsize">20sp</dimen>
+    <dimen name="md_content_textsize">18sp</dimen>
+    <dimen name="md_button_textsize">14sp</dimen>
+    <dimen name="md_listitem_textsize">18sp</dimen>
+    <dimen name="md_listitem_height">48dp</dimen>
+    <dimen name="md_listitem_control_margin">16dp</dimen>
+    <dimen name="md_icon_margin">16dp</dimen>
+    <dimen name="md_listitem_margin_left">24dp</dimen>
+    <dimen name="md_action_corner_radius">2dp</dimen>
+
+    <!-- Text -->
+    <dimen name="textSizeMicro">12sp</dimen>
+    <dimen name="textSizeSmall">14sp</dimen>
+    <dimen name="textSizeSmallPlus">15sp</dimen>
+    <dimen name="textSizeMedium">16sp</dimen>
+    <dimen name="textSizeLarge">18sp</dimen>
+    <dimen name="textSizeLargePlus">19sp</dimen>
+    <dimen name="textSizeExtraLarge">25sp</dimen>
+    <dimen name="textSizeXXLLarge">32sp</dimen>
+    <dimen name="textSizeXXXLLarge">40sp</dimen>
+    <dimen name="textSizeSuperSizedLarge">64sp</dimen>
+    <dimen name="EndCallStatusTextSize">24sp</dimen>
+
+    <!-- Padding -->
+    <dimen name="paddingSizeNone">0dp</dimen>
+    <dimen name="paddingSizeMicro">2dp</dimen>
+    <dimen name="paddingSizeSmall">4dp</dimen>
+    <dimen name="paddingSizeSmallPlus">17dp</dimen>
+    <dimen name="paddingSizeSmallExtraPlus">7.5dp</dimen>
+    <dimen name="paddingSizeMedium">16dp</dimen>
+    <dimen name="paddingSizeMediumPlus">12dp</dimen>
+    <dimen name="paddingSizeMediumPlusPlus">17dp</dimen>
+    <dimen name="paddingSizeMediumExtraPlus">15dp</dimen>
+    <dimen name="paddingSizeMediumExtraPlusPlus">30.5dp</dimen>
+    <dimen name="paddingSizeLarge">25dp</dimen>
+    <dimen name="paddingSizeExtraLarge">30dp</dimen>
+    <dimen name="paddingSizeExtraLargePlus">40dp</dimen>
+    <dimen name="paddingSizeExtraLargePlusPlus">50dp</dimen>
+    <dimen name="paddingTextField">17.5dp</dimen>
+
+    <!-- Margin -->
+    <dimen name="marginSizeNano">2dp</dimen>
+    <dimen name="marginSizeMicro">3dp</dimen>
+    <dimen name="marginSizeMicroPlus">5dp</dimen>
+    <dimen name="marginSizeMicroPlusPlus">8dp</dimen>
+    <dimen name="marginSizeSmall">10dp</dimen>
+    <dimen name="marginSizeSmallPlus">25dp</dimen>
+    <dimen name="marginSizeMedium">20dp</dimen>
+    <dimen name="marginSizeLarge">25dp</dimen>
+    <dimen name="marginSizeXLarge">30dp</dimen>
+    <dimen name="marginSizeXXLarge">35dp</dimen>
+    <dimen name="marginSizeExtraLarge">40dp</dimen>
+    <dimen name="marginSizeExtraLargePlus">50dp</dimen>
+    <dimen name="marginSzeExtraLargePlustwo">55dp</dimen>
+
+    <dimen name="SizeZero">0dp</dimen>
+    <dimen name="SizeMicro">1dp</dimen>
+    <dimen name="SizeSmall">2dp</dimen>
+    <dimen name="SizeBlewMedium">6dp</dimen> <!-- using this in the messages page -->
+    <dimen name="SizeMedium">8dp</dimen> <!-- using this in the preferences page -->
+    <dimen name="stdBtnHeight">54dp</dimen> <!-- standard button height -->
+    <dimen name="stdBtnHeightplus">55dp</dimen>
+    <dimen name="bigBtnHeight">60dp</dimen> <!-- big button height -->
+    <dimen name="stdGutterSize">15dp</dimen>
+    <dimen name="stdBtnWidthstdBtnWidth">150dp</dimen>
+    <dimen name="stdGutterSizeMed">18dp</dimen>
+    <dimen name="stdGutterRightSizeMed">6dp</dimen>
+    <dimen name="stdGutterRightSize">10dp</dimen>
+    <dimen name="stdDividerHeightMicro">1dp</dimen>
+    <dimen name="stdDividerHeightSmall">2dp</dimen>
+    <dimen name="stdDividerHeight">24dp</dimen>
+    <dimen name="onePixel">1px</dimen>
+
+    <dimen name="textSizeStdForm">18sp</dimen> <!-- ALL form fields -->
+
+    <dimen name="mandatory_img_size">20dp</dimen>
+
+    <!-- Cornerstone specific dimens-->
+    <dimen name="textSizeBtnLabel">23dp</dimen>
+    <!--<dimen name="header_height">190dp</dimen>-->
+    <dimen name="header_height">48dp</dimen>
+    <dimen name="body_height">357dp</dimen>
+    <dimen name="min_header_height">64dp</dimen>
+    <dimen name="header_logo_size">100dp</dimen>
+
+    <dimen name="cornerstone_calculate_submit_buttons">300dp</dimen> <!-- matchparent on phone -->
+
+    <string name="actionbar_title">ParallaxHeaderViewPager</string>
+    <dimen name="measurements_header_height">48dp</dimen>
+    <dimen name="new_button_size">50dp</dimen>
+    <dimen name="new_button_for_tab_land">80dp</dimen>
+
+    <dimen name="new_margin_for_tab_layout">200dp</dimen>
+    <dimen name = "extra_padding">70dp</dimen>
+
+</resources>
+
+

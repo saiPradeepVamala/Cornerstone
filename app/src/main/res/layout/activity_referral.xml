@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/marginSizeLarge"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/marginSizeMedium"
+        android:layout_marginRight="@dimen/marginSizeMedium"
+        android:layout_marginTop="@dimen/marginSizeLarge"
+        android:layout_marginBottom="@dimen/marginSizeLarge"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/makereferral_patient_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--<TextView-->
+            <!--android:id="@+id/email_recipient"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/marginSizeMicroPlus"-->
+            <!--android:padding="@dimen/marginSizeMicroPlus"-->
+            <!--android:text="Email To: "-->
+            <!--android:textColor="@color/Black"-->
+            <!--android:textSize="@dimen/textSizeMedium"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="@dimen/marginSizeMicroPlus">-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/email_recipient_manadatory"-->
+            <!--android:layout_width="@dimen/mandatory_img_size"-->
+            <!--android:layout_height="@dimen/mandatory_img_size"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:contentDescription=""-->
+            <!--android:padding="@dimen/marginSizeMicroPlus"-->
+            <!--android:src="@drawable/ic_mandatory" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/email_recipient_edit_text"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/marginSizeExtraLargePlus"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="@dimen/marginSizeMicro"-->
+            <!--android:layout_toRightOf="@+id/email_recipient_manadatory"-->
+            <!--android:background="@drawable/edit_text_rounded_bg"-->
+            <!--android:hint="email ID"-->
+            <!--android:inputType="textEmailAddress"-->
+            <!--android:text=""-->
+            <!--android:padding="@dimen/marginSizeMicroPlus"-->
+            <!--android:textColor="@color/black_gray"-->
+            <!--android:textColorHint="@color/crs_primary_status_bar_color" />-->
+            <!--</RelativeLayout>-->
+            <!--ayushagg@aboundsystems.com-->
+
+            <TextView
+                android:id="@+id/makereferral_patient_information_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marginSizeMicroPlus"
+                android:padding="@dimen/marginSizeMicroPlus"
+                android:text="@string/make_referral_patient_information"
+                android:textColor="@color/Black"
+                android:textSize="@dimen/textSizeMedium"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/makereferral_patient_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marginSizeMicroPlus">
+
+                <ImageView
+                    android:id="@+id/makereferral_patient_name_mandatory"
+                    android:layout_width="@dimen/mandatory_img_size"
+                    android:layout_height="@dimen/mandatory_img_size"
+                    android:layout_alignParentLeft="true"
+                    android:contentDescription=""
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:src="@drawable/ic_mandatory" />
+
+                <EditText
+                    android:id="@+id/makereferral_patient_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/marginSizeExtraLargePlus"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/marginSizeMicro"
+                    android:layout_toRightOf="@+id/makereferral_patient_name_mandatory"
+                    android:background="@drawable/edit_text_rounded_bg"
+                    android:hint="@string/make_referral_name_hint"
+                    android:inputType="text"
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:textColor="@color/black_gray"
+                    android:textColorHint="@color/crs_primary_status_bar_color" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/makereferral_patient_phone_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marginSizeMicroPlus">
+
+                <ImageView
+                    android:id="@+id/makereferral_patient_phone_mandatory"
+                    android:layout_width="@dimen/mandatory_img_size"
+                    android:layout_height="@dimen/mandatory_img_size"
+                    android:layout_alignParentLeft="true"
+                    android:contentDescription=" "
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:src="@drawable/ic_mandatory" />
+
+                <EditText
+                    android:id="@+id/makereferral_patient_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/marginSizeExtraLargePlus"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/marginSizeMicro"
+                    android:layout_toRightOf="@+id/makereferral_patient_phone_mandatory"
+                    android:background="@drawable/edit_text_rounded_bg"
+                    android:hint="@string/make_referral_phone_hint"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:textColor="@color/black_gray"
+                    android:textColorHint="@color/crs_primary_status_bar_color" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/makereferral_patient_diagnosis_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marginSizeMicroPlus">
+
+                <ImageView
+                    android:id="@+id/makereferral_patient_diagnosis_mandatory"
+                    android:layout_width="@dimen/mandatory_img_size"
+                    android:layout_height="@dimen/mandatory_img_size"
+                    android:layout_alignParentLeft="true"
+                    android:contentDescription=" "
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:src="@drawable/ic_mandatory"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/makereferral_patient_diagnosis"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/marginSizeExtraLargePlus"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/marginSizeMicro"
+                    android:layout_toRightOf="@+id/makereferral_patient_diagnosis_mandatory"
+                    android:background="@drawable/edit_text_rounded_bg"
+                    android:hint="@string/make_referral_diagnosis_hint"
+                    android:inputType="text"
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:textColor="@color/black_gray"
+                    android:textColorHint="@color/crs_primary_status_bar_color" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/makereferral_your_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/makereferral_your_information_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marginSizeMicroPlus"
+                android:padding="@dimen/marginSizeMicroPlus"
+                android:text="@string/make_referral_your_information"
+                android:textColor="@color/Black"
+                android:textSize="@dimen/textSizeMedium"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/makereferral_your_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marginSizeMicroPlus">
+
+                <ImageView
+                    android:id="@+id/makereferral_your_name_mandatory"
+                    android:layout_width="@dimen/mandatory_img_size"
+                    android:layout_height="@dimen/mandatory_img_size"
+                    android:layout_alignParentLeft="true"
+                    android:contentDescription=" "
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:src="@drawable/ic_mandatory" />
+
+                <EditText
+                    android:id="@+id/makereferral_your_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/marginSizeExtraLargePlus"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/marginSizeMicro"
+                    android:layout_toRightOf="@+id/makereferral_your_name_mandatory"
+                    android:background="@drawable/edit_text_rounded_bg"
+                    android:hint="@string/make_referral_name_hint"
+                    android:inputType="text"
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:textColor="@color/black_gray"
+                    android:textColorHint="@color/crs_primary_status_bar_color" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/makereferral_your_phone_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marginSizeMicroPlus">
+
+                <ImageView
+                    android:id="@+id/makereferral_your_phone_mandatory"
+                    android:layout_width="@dimen/mandatory_img_size"
+                    android:layout_height="@dimen/mandatory_img_size"
+                    android:layout_alignParentLeft="true"
+                    android:contentDescription=" "
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:src="@drawable/ic_mandatory" />
+
+                <EditText
+                    android:id="@+id/makereferral_your_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/marginSizeExtraLargePlus"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/marginSizeMicro"
+                    android:layout_toRightOf="@+id/makereferral_your_phone_mandatory"
+                    android:background="@drawable/edit_text_rounded_bg"
+                    android:hint="@string/make_referral_phone_hint"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:textColor="@color/black_gray"
+                    android:textColorHint="@color/crs_primary_status_bar_color" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/makereferral_your_relation_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marginSizeMicroPlus">
+
+                <ImageView
+                    android:id="@+id/makereferral_your_relation_mandatory"
+                    android:layout_width="@dimen/mandatory_img_size"
+                    android:layout_height="@dimen/mandatory_img_size"
+                    android:layout_alignParentLeft="true"
+                    android:contentDescription=" "
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:src="@drawable/ic_mandatory" />
+
+                <EditText
+                    android:id="@+id/makereferral_your_relation"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/marginSizeExtraLargePlus"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/marginSizeMicro"
+                    android:layout_toRightOf="@+id/makereferral_your_relation_mandatory"
+                    android:background="@drawable/edit_text_rounded_bg"
+                    android:hint="@string/make_referral_relation_hint"
+                    android:inputType="text"
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:textColor="@color/black_gray"
+                    android:textColorHint="@color/crs_primary_status_bar_color" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/makereferral_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/makereferral_call_to_patient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/marginSizeMicroPlus">
+
+                <TextView
+                    android:id="@+id/makereferral_call_to_patient_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="@dimen/marginSizeMicroPlusPlus"
+                    android:layout_marginRight="@dimen/marginSizeMicro"
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:text="@string/make_referral_call_to_patient_text"
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/textSizeMedium"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/referral_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/makereferral_call_to_patient_label"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/marginSizeMicroPlus">
+
+                    <RadioButton
+                        android:id="@+id/referral_radioYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/yes_button" />
+
+                    <RadioButton
+                        android:id="@+id/referral_radioNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/no_button" />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/makereferral_comments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/makereferral_comments_layout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="@dimen/marginSizeMicroPlus"
+                android:layout_marginRight="@dimen/marginSizeMicroPlus"
+                android:padding="@dimen/marginSizeMicroPlus">
+
+                <EditText
+                    android:id="@+id/makereferral_comments_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/edit_text_rounded_bg"
+                    android:gravity="left|top"
+                    android:hint="@string/makereferral_notes_hint"
+                    android:inputType="textMultiLine"
+                    android:maxLines="50"
+                    android:padding="@dimen/marginSizeMicroPlus"
+                    android:textColor="@color/black_gray"
+                    android:textColorHint="@color/crs_primary_status_bar_color" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_medium"
+            android:layout_margin="@dimen/marginSizeMedium"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+                <Button
+                    android:id="@+id/camera"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/photo_camera" />
+
+            </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_gravity="center">
+          <ImageView
+              android:id="@+id/refferal_thumb_iv"
+              android:layout_width="@dimen/header_logo_size"
+              android:layout_height="@dimen/header_logo_size"
+              android:layout_marginLeft="@dimen/marginSizeMedium"
+              android:background="@color/light_gray"
+              android:visibility="gone" />
+
+          <Button
+              android:id="@+id/remove_image"
+              android:layout_width="@dimen/marginSizeXLarge"
+              android:layout_height="@dimen/marginSizeXLarge"
+             android:layout_gravity="center_vertical"
+              android:background="@android:drawable/ic_menu_close_clear_cancel"
+              />
+
+          <TextView
+              android:id="@+id/would_like_take_picture"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginLeft="@dimen/marginSizeMedium"
+              android:text="@string/attach_a_face_sheet"
+              android:textColor="@color/Black"
+              android:textSize="@dimen/textSizeMedium"
+              android:textStyle="bold" />
+
+      </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/fillscreen"
+    android:background="@color/white" >
+
+    <ImageView
+        android:id="@+id/isplash_company_mageView"
+        style="@style/fillscreen"
+        android:src="@drawable/cornerstone_bg"
+        android:scaleType="fitXY"/>
+    <ImageView
+        android:id="@+id/splash_screen_title_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cornerstone_splash_logo"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="@dimen/marginSizeMedium"/>
+    <TextView
+        android:id="@+id/splash_screen_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginSizeSmall"
+        android:layout_below="@+id/splash_screen_title_image"
+        android:layout_centerHorizontal="true"
+        android:text="@string/Patient_assessment_text_one"
+        android:textColor="#FFFFF6"
+        android:textSize="25dp"
+        />
+    <TextView
+        android:id="@+id/splash_screen_title_text_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/splash_screen_title_text"
+        android:layout_centerHorizontal="true"
+        android:text="@string/referral_text"
+        android:textColor="#FFFFF6"
+        android:textSize="25dp"
+        />
+    <LinearLayout
+        android:id="@+id/splash_layout_root"
+        style="@style/wrapscreen"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical" >
+
+        <ProgressBar
+            android:id="@+id/splash_pb"
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:max="100"
+            android:progress="10"
+            android:secondaryProgress="0" />
+
+        <TextView
+            android:id="@+id/splash_userinfo"
+            style="@style/fillscreen"
+            android:gravity="center_horizontal"
+            android:text="@string/splash_loading_message"
+            android:textColor="@color/Gray"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</RelativeLayout>

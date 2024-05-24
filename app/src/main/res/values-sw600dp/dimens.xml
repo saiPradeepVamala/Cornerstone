@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="header_height">48dp</dimen>
+    <dimen name="body_height">470dp</dimen>
+    <dimen name="cornerstone_calculate_submit_buttons">200dp</dimen>
+    <integer name="side_menu_width_weight">35</integer>
+    <integer name="fragment_width_weight">65</integer>
+</resources>

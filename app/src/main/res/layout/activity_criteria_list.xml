@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cornerstone_cell_grey">
+
+    <ExpandableListView
+        android:id="@+id/lvExp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:childDivider="@color/white"
+        android:groupIndicator="@null"
+        />
+
+    <FrameLayout
+        android:paddingTop="@dimen/header_height"
+        android:id="@+id/details_fragment_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+</RelativeLayout>
