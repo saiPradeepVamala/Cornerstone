@@ -198,13 +198,10 @@ public class BMIActivity extends BaseActivity implements OnClickListener {
                 mBMIResultsTV.setText(String.format((new DecimalFormat("#.##").format(bmiValue))));
                 mBMIResultTextTV.setText(setBMIText(bmiValue));
         }
-//        switch (v.getId()) {
-//            case R.id.bmi_calcluate_bmi_btn:
-//
-//                double bmiValue = (mSelectedWeight * 0.453592) / ((mSelectedHeight * 30.38 / 100) * (mSelectedHeight * 30.38 / 100));
-//                mBMIResultsTV.setText(String.format((new DecimalFormat("#.##").format(bmiValue))));
-//                mBMIResultTextTV.setText(setBMIText(bmiValue));
-//                break;
-//        }
+        if (v.getId() == R.id.bmi_calcluate_bmi_btn) {
+            double bmiValue = (mSelectedWeight * 0.453592) / ((mSelectedHeight * 30.38 / 100) * (mSelectedHeight * 30.38 / 100));
+            mBMIResultsTV.setText(String.format((new DecimalFormat("#.##").format(bmiValue))));
+            mBMIResultTextTV.setText(setBMIText(bmiValue));
+        }
     }
 }
