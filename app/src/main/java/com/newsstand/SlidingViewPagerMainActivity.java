@@ -237,7 +237,7 @@ public class SlidingViewPagerMainActivity extends AppCompatActivity implements S
         if (mActionBarHeight != 0) {
             return mActionBarHeight;
         }
-        getTheme().resolveAttribute(R.attr.actionBarSize, mTypedValue, true);
+//        getTheme().resolveAttribute(R.attr.actionBarSize, mTypedValue, true);
         mActionBarHeight = TypedValue.complexToDimensionPixelSize(mTypedValue.data, getResources().getDisplayMetrics());
         return mActionBarHeight;
     }

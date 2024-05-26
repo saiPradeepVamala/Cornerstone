@@ -1,6 +1,6 @@
 <resources>
-    
-    
+
+
     <!-- Use these styles or as per the requirement ass new style -->
     <style name="verticleblock">
         <item name="android:layout_height">wrap_content</item>

@@ -1,9 +1,13 @@
 package com.cornerstonehospice.android.activities;
 
 
+import static com.google.gson.internal.$Gson$Types.arrayOf;
+
+import android.Manifest;
 import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -15,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 
 import com.cornerstonehospice.R;
 import com.cornerstonehospice.android.manager.SharedPreferenceManager;
@@ -120,7 +125,14 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         SharedPreferenceManager sharedPref = SharedPreferenceManager.getInstance();
         String phoneNo = sharedPref.getString(AppConstants.KEY_PHONE_NO, AppConstants.DEFAULT_STRING);
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNo));
-        startActivity(intent);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CALL_PHONE}, 99);
+        }else{
+            startActivity(intent);
+        }
+
     }
 
     public void sendEmail() {

@@ -14,9 +14,8 @@
         <attr name="pstsShouldExpand" format="boolean" />
         <attr name="pstsTextAllCaps" format="boolean" />
         <attr name="pstsTabWidth" format="dimension" />
+<!--        <attr name="actionBarSize" format="boolean" />-->
     </declare-styleable>
 
     <bool name="is_tablet">false</bool>
-
-    <attr name="actionBarSize" />
 </resources>

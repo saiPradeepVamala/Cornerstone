@@ -39,16 +39,20 @@ android {
             excludes += "mozilla/public-suffix-list.txt"
         }
     }
+    buildToolsVersion = "34.0.0"
 }
+
 
 dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.12.0")
+
     implementation("com.google.code.gson:gson:2.11.0")
 //   implementation(files("libs/android-logging-log4j-1.0.2.jar"))
 //    replaced with the below as above is the old way of adding dependency
-    implementation ("org.apache.logging.log4j:log4j-api:2.23.1")
+    implementation("org.apache.logging.log4j:log4j-api:2.23.1")
+//    implementation("androidx.viewpager:viewpager:1.0.0")
 
 //    Discontinued -> Not able to know what to add
 //    implementation(files("libs/db4o-8.0.249.16098-all-java5.jar"))
@@ -56,7 +60,7 @@ dependencies {
 //    implementation(files("libs/log4j-1.2.16.jar"))
 
 //    implementation (files("libs/simple-xml-2.7.1.jar")) Replaced with below
-    implementation ("org.simpleframework:simple-xml:2.7.1")
+    implementation("org.simpleframework:simple-xml:2.7.1")
 
 //    implementation(files("libs/httpclient-4.1.1.jar"))
 //    implementation(files("libs/httpclient-cache-4.1.1.jar"))
@@ -64,9 +68,9 @@ dependencies {
 //    implementation(files("libs/httpmime-4.1.1.jar"))
 //    Replacing with new
     implementation("org.apache.httpcomponents.client5:httpclient5:5.3.1")
-    implementation ("org.apache.httpcomponents:httpcore:4.4.16")
+    implementation("org.apache.httpcomponents:httpcore:4.4.16")
     implementation("org.apache.httpcomponents:httpmime:4.5.14")
-    implementation("org.apache.httpcomponents:httpclient-cache:4.5.14"  )
+    implementation("org.apache.httpcomponents:httpclient-cache:4.5.14")
 
 //    Deprecated
 //    implementation(files("libs/nineoldandroids-2.4.0.jar"))

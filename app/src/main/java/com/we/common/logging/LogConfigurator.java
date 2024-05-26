@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.log4j.Layout;
-import org.apache.log4j.PatternLayout;
-import org.apache.log4j.RollingFileAppender;
+//import org.apache.log4j.Layout;
+//import org.apache.log4j.PatternLayout;
+//import org.apache.log4j.RollingFileAppender;
 import org.apache.logging.log4j.Level;
 
 import android.os.Environment;
