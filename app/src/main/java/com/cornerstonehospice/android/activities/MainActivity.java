@@ -125,6 +125,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         SharedPreferenceManager sharedPref = SharedPreferenceManager.getInstance();
         String phoneNo = sharedPref.getString(AppConstants.KEY_PHONE_NO, AppConstants.DEFAULT_STRING);
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNo));
+        // Requesting run time permission.
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
