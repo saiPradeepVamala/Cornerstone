@@ -9,9 +9,10 @@ android {
 
     defaultConfig {
         applicationId = "com.cornerstonehospice"
-        minSdk = 26
+        minSdk = 29
         versionCode = 1
         versionName = "1.0"
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
