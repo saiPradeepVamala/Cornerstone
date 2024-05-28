@@ -1,8 +1,11 @@
 package com.cornerstonehospice.android.fragments;
 
+import android.content.Context;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.cornerstonehospice.R;
 import com.cornerstonehospice.android.adapters.ExpandableListAdapter;
@@ -20,6 +24,8 @@ import com.newsstand.ScrollTabHolderFragment;
 import com.we.common.builders.json.CommonJsonBuilder;
 import com.we.common.utils.WELogger;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -96,7 +102,7 @@ public class CriteriaListFragment extends ScrollTabHolderFragment implements OnS
 
     private void prepareListData() {
 
-        String payload = ((CornerStoneApplication) getActivity().getApplication()).getParsedCriteria();
+        String payload = ((CornerStoneApplication) requireActivity().getApplication()).getParsedCriteria();
         WELogger.infoLog(TAG, "onCreateView() :: Parsed criteria String ; " + payload);
         CriteriaDataResult criteriaList = (CommonJsonBuilder.getEntityForJson(payload, CriteriaDataResult.class));
         if (criteriaList != null) {
@@ -107,8 +113,11 @@ public class CriteriaListFragment extends ScrollTabHolderFragment implements OnS
                 listDataHeader.add(criteria.criterionTitle);
                 listDataChild.put(criteria.criterionTitle, criteria.criterion.get(0).indication);
             }
+        }else{
+            Log.d("LISTYI","NULL");
         }
     }
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

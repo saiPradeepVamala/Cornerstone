@@ -1,14 +1,15 @@
 package com.cornerstonehospice.android.activities;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
-import android.app.Fragment;
+import android.widget.Toast;
 
 import com.cornerstonehospice.R;
 import com.cornerstonehospice.android.adapters.CriteriaListAdapter;
@@ -43,6 +44,7 @@ public class CriteriaListActivity extends BaseActivity implements AdapterView.On
 
     private void initListView() {
         String payload = getIntent().getStringExtra(AppConstants.CRITERIA_DATA);
+        Log.d("Effecter", "Criteria List: " + payload);
         CriteriaDataResult criteriaList = (CommonJsonBuilder.getEntityForJson(payload, CriteriaDataResult.class));
         mAdapter = new CriteriaListAdapter(this);
         mAdapter.addAll(criteriaList.criteria_results);
@@ -59,8 +61,10 @@ public class CriteriaListActivity extends BaseActivity implements AdapterView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == android.R.id.home) {
-            onBackPressed();
+        switch (id) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -73,15 +77,13 @@ public class CriteriaListActivity extends BaseActivity implements AdapterView.On
     }
 
     private void navigateToCriteriaDetailsFragment(Criteria item) {
-//        CriteriaDetailsFragment fr = new CriteriaDetailsFragment();
-//        Commented out and added as fragment
-        Fragment fr = new Fragment();
+        Fragment fr = new CriteriaDetailsFragment();
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         Bundle b = new Bundle();
         b.putString("ITEM", CommonJsonBuilder.getJsonForEntity(item));
         fr.setArguments(b);
         ft.addToBackStack(fr.getTag());
-        ft.replace(R.id.details_fragment_frame, fr, fr.getTag());
+        ft.replace(R.id.details_fragment_frame, fr);
         ft.commitAllowingStateLoss();
     }
 

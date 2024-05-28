@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import com.cornerstonehospice.android.api.builders.CriteriaBuilder;
@@ -48,12 +49,12 @@ public class CornerStoneApplication extends Application {
 	}
 
 
-
+//
 //	private Handler criteriaAPIHandler = new Handler(){
 //		public void handleMessage(android.os.Message msg) {
 //			DataResult<CriteriaDataResult> criteriaResults	=	(DataResult<CriteriaDataResult>)msg.obj;
 //			String str = new CommonJsonBuilder().getJsonForEntity(criteriaResults.entity);
-//			mCriteriaString	=	str;
+//			mCriteriaString	=	"Hello All";
 //		}
 //	};
 

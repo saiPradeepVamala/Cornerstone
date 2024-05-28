@@ -2,13 +2,14 @@ package com.cornerstonehospice.android.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
+import android.app.Fragment;
 
 import com.cornerstonehospice.R;
 import com.cornerstonehospice.android.api.results.Criteria;
@@ -27,18 +28,16 @@ public class CriteriaDetailsFragment extends Fragment {
     private TextView mCriterionTV;
     private LinearLayout linearLayout;
 
-
-    public CriteriaDetailsFragment() {
-    }
+//
+//    public CriteriaDetailsFragment() {
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // To avoid null pointer exception
-        assert getArguments() != null;
+        View v = inflater.inflate(R.layout.fragment_criteria_list, container, false);
         String itemModel = getArguments().getString("ITEM", null);
         mCriteria = CommonJsonBuilder.getEntityForJson(itemModel, Criteria.class);
-        View v = inflater.inflate(R.layout.fragment_criteria_list, container, false);
         initUI(v);
         return v;
     }
@@ -64,7 +63,7 @@ public class CriteriaDetailsFragment extends Fragment {
             int viewIndex = 1;
             for (Criterion crit : mCriteria.criterion) {
                 // Replaced getActivity.getSystemService() with requiredActivity().getSystemService()
-                LayoutInflater inflater = (LayoutInflater) requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View v = inflater.inflate(R.layout.criteria_cell, null);
                 // Removed redundant cast
                 TextView titleTV = v.findViewById(R.id.criteria_heading);

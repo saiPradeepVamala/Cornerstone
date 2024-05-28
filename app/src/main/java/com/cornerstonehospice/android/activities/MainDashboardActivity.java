@@ -73,7 +73,6 @@ public class MainDashboardActivity extends AppCompatActivity {
             setUpDrawer();
 
         } */
-
         getContactInfo();
     }
 
@@ -199,10 +198,15 @@ public class MainDashboardActivity extends AppCompatActivity {
         sharedPref.saveString(AppConstants.KEY_PHONE_NO, AppConstants.CORNERSTONE_CONSTANT_PHONE_NUMBER);
     }
 
-    private final Handler criteriaAPIHandler = new Handler(Looper.getMainLooper()) {
+    private final Handler criteriaAPIHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             DataResult<CriteriaDataResult> criteriaResults = (DataResult<CriteriaDataResult>) msg.obj;
-            String str = CommonJsonBuilder.getJsonForEntity(criteriaResults.entity);
+            if(msg.obj == null){
+                Log.d("msgValueNull","Null");
+            }else{
+                Log.d("msgValue","Not Null");
+            }
+            String str = CommonJsonBuilder.getJsonForEntity(criteriaResults.entities);
             navigateToCriteriaListActivity(str);
         }
     };
