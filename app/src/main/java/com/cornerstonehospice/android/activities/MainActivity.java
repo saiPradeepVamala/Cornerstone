@@ -1,8 +1,6 @@
 package com.cornerstonehospice.android.activities;
 
 
-import static com.google.gson.internal.$Gson$Types.arrayOf;
-
 import android.Manifest;
 import android.app.ActionBar;
 import android.content.DialogInterface;
@@ -18,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 
@@ -90,7 +89,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
     }
 
-
     @Override
     public void onClick(View v) {
 
@@ -122,18 +120,32 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     }
 
     public void call() {
-        SharedPreferenceManager sharedPref = SharedPreferenceManager.getInstance();
-        String phoneNo = sharedPref.getString(AppConstants.KEY_PHONE_NO, AppConstants.DEFAULT_STRING);
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNo));
         // Requesting run time permission.
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CALL_PHONE}, 99);
+                    new String[]{Manifest.permission.CALL_PHONE}, 199);
         }else{
-            startActivity(intent);
+            makeCall();
         }
+    }
 
+    private void makeCall() {
+        SharedPreferenceManager sharedPref = SharedPreferenceManager.getInstance();
+        String phoneNo = sharedPref.getString(AppConstants.KEY_PHONE_NO, AppConstants.DEFAULT_STRING);
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNo));
+        startActivity(intent);
+    }
+
+    // If permission granted, call makeCall() method.
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 199) {
+            makeCall();
+        }else{
+            Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void sendEmail() {

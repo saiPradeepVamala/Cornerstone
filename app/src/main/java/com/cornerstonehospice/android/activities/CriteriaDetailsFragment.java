@@ -34,6 +34,8 @@ public class CriteriaDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // To avoid null pointer exception
+        assert getArguments() != null;
         String itemModel = getArguments().getString("ITEM", null);
         mCriteria = CommonJsonBuilder.getEntityForJson(itemModel, Criteria.class);
         View v = inflater.inflate(R.layout.fragment_criteria_list, container, false);
@@ -61,12 +63,15 @@ public class CriteriaDetailsFragment extends Fragment {
             }
             int viewIndex = 1;
             for (Criterion crit : mCriteria.criterion) {
-                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                // Replaced getActivity.getSystemService() with requiredActivity().getSystemService()
+                LayoutInflater inflater = (LayoutInflater) requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View v = inflater.inflate(R.layout.criteria_cell, null);
-                TextView titleTV = (TextView) v.findViewById(R.id.criteria_heading);
-                TextView indicatorTV = ((TextView) v.findViewById(R.id.criterion));
+                // Removed redundant cast
+                TextView titleTV = v.findViewById(R.id.criteria_heading);
+                TextView indicatorTV = v.findViewById(R.id.criterion);
 
-                titleTV.setTextSize((getResources().getDimensionPixelSize(R.dimen.textSizeMicro))/2);
+                // added float as cast
+                titleTV.setTextSize((float) (getResources().getDimensionPixelSize(R.dimen.textSizeMicro)) /2);
                 titleTV.setText(crit.indicators_subtitle);
                 indicatorTV.setText(getIndicationsListAsString(crit.indication));
                 linearLayout.addView(v, viewIndex++);
@@ -77,14 +82,16 @@ public class CriteriaDetailsFragment extends Fragment {
     private String getIndicationsListAsString(List<String> indications) {
         String sb = "";
         for (String str : indications) {
-            sb = sb.concat(str + System.getProperty("line.separator") + System.getProperty("line.separator"));
+            // Call 'getProperty' can be simplified for 'line.separator'
+            sb = sb.concat(str + System.lineSeparator() + System.lineSeparator());
         }
         return sb;
     }
 
     private void initUI(View fragmentView) {
-        mTitleTV = (TextView) fragmentView.findViewById(R.id.criteria_heading);
-        mCriterionTV = (TextView) fragmentView.findViewById(R.id.criterion);
-        linearLayout = (LinearLayout) fragmentView.findViewById(R.id.rootView);
+        // Removed redundant cast
+        mTitleTV = fragmentView.findViewById(R.id.criteria_heading);
+        mCriterionTV = fragmentView.findViewById(R.id.criterion);
+        linearLayout = fragmentView.findViewById(R.id.rootView);
     }
 }

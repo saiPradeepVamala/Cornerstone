@@ -49,13 +49,13 @@ public class CornerStoneApplication extends Application {
 
 
 
-	private Handler criteriaAPIHandler = new Handler(){
-		public void handleMessage(android.os.Message msg) {
-			DataResult<CriteriaDataResult> criteriaResults	=	(DataResult<CriteriaDataResult>)msg.obj;
-			String str = new CommonJsonBuilder().getJsonForEntity(criteriaResults.entity);
-			mCriteriaString	=	str;
-		}
-	};
+//	private Handler criteriaAPIHandler = new Handler(){
+//		public void handleMessage(android.os.Message msg) {
+//			DataResult<CriteriaDataResult> criteriaResults	=	(DataResult<CriteriaDataResult>)msg.obj;
+//			String str = new CommonJsonBuilder().getJsonForEntity(criteriaResults.entity);
+//			mCriteriaString	=	str;
+//		}
+//	};
 
 
 	public String getParsedCriteria(){
@@ -72,7 +72,7 @@ public class CornerStoneApplication extends Application {
 		CriteriaDataRequest contactRequest 		= 		new CriteriaDataRequest(getApplicationContext());
 		contactRequest.requestDelegate 			= 		new CriteriaBuilder();
 		contactRequest.requestType 				= 		CriteriaBuilder.RequestType.GET_CRITERIA;
-		new DataApiAsyncTask(true, this, criteriaAPIHandler, null).execute(contactRequest);
+//		new DataApiAsyncTask(true, this, criteriaAPIHandler, null).execute(contactRequest);
 
 	}
 

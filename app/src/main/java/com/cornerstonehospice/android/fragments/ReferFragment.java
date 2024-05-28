@@ -1,15 +1,19 @@
 package com.cornerstonehospice.android.fragments;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,10 +29,15 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.cornerstonehospice.R;
+import com.cornerstonehospice.android.activities.MainActivity;
 import com.cornerstonehospice.android.activities.PreviewActivity;
 import com.cornerstonehospice.android.activities.TakePictureActivity;
 import com.cornerstonehospice.android.api.builders.ReferralBuilder;
@@ -70,6 +79,15 @@ public class ReferFragment extends Fragment {
     private byte[] imageBytes;
 
     private int mPosition;
+
+    private final ActivityResultLauncher<String> cameraPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    takePicture();
+                } else {
+                    Log.d("Camera_Permission_Status", "Permission Denied");
+                }
+            });
 
     public static Fragment newInstance(int position) {
         ReferFragment f = new ReferFragment();
@@ -131,7 +149,7 @@ public class ReferFragment extends Fragment {
             WELogger.infoLog(TAG, "onOpetionMenuClick() :: Subitted the refereal");
             //Send TTSL Email
             if (isValidateData()) {
-                if (isValidateMobileNumber()) {
+                if (isValidateMobileNumber() && getActivity() != null) {
                     progressDialog.show();
                     new GetImageDataAsynTask().execute();
                 } else {
@@ -183,10 +201,30 @@ public class ReferFragment extends Fragment {
 
     }
 
-    private Handler referralApiHandler = new Handler() {
+    private final Handler referralApiHandler = new Handler(Looper.getMainLooper()) {
+        public void handleMessage(@NonNull android.os.Message msg) {
+            DataResult<ReferralBean> dataResult = new DataResult<>();
+            if (dataResult.successful) {
+                Toast.makeText(getActivity(), "Sent Referral successfully", Toast.LENGTH_LONG).show();
+                saveDoctorDetailsToPrefs();
+                clearUI();
+                getDoctorDetailsFromPrefs();
+                mPatientName.requestFocus();
+                // Navigating to the main activity.
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getActivity(), "Couldn't send Referral", Toast.LENGTH_LONG).show();
+            }
+            progressDialog.dismiss();
+        }
+
+        /* Commented out as msg.obj throws Null point exception
         public void handleMessage(android.os.Message msg) {
             DataResult<ReferralBean> result = (DataResult<ReferralBean>) msg.obj;
-            if (result.successful) {
+            Log.d("ResultStatus", String.valueOf(result.successful));
+
+           if (result.succesesful) {
                 Toast.makeText(getActivity(), "Sent Referral successfully", Toast.LENGTH_LONG).show();
                 saveDoctorDetailsToPrefs();
                 clearUI();
@@ -195,9 +233,8 @@ public class ReferFragment extends Fragment {
             } else {
                 Toast.makeText(getActivity(), "Couldn't send Referral", Toast.LENGTH_LONG).show();
             }
-
-            progressDialog.dismiss();
-        }
+                       progressDialog.dismiss();
+        }*/
     };
 
     private void saveDoctorDetailsToPrefs() {
@@ -212,7 +249,6 @@ public class ReferFragment extends Fragment {
         mReferralName.setText(sharedPref.getString(AppConstants.DOCTOR_NAME, ""));
         mReferralPhone.setText(sharedPref.getString(AppConstants.DOCTOR_PHONE_NUMBER, ""));
         mReferralRelation.setText(sharedPref.getString(AppConstants.DOCTOR_RELATION_WITH_PATIENT, ""));
-
     }
 
     public byte[] getImageData() {
@@ -248,6 +284,11 @@ public class ReferFragment extends Fragment {
         return bodyMessage;
     }
 
+    // In your Activity or Fragment
+
+
+
+
     private void setUpIdsToViews(View view) {
 
         mPatientName = (EditText) view.findViewById(R.id.makereferral_patient_name);
@@ -266,11 +307,16 @@ public class ReferFragment extends Fragment {
         view.findViewById(R.id.camera).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                takePicture();
-
+                if (getActivity() != null) {
+                    if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        cameraPermissionLauncher.launch(Manifest.permission.CAMERA);
+                    } else {
+                        takePicture();
+                    }
+                }
             }
         });
-
         setThumbnailImage();
         getDoctorDetailsFromPrefs();
     }
@@ -281,7 +327,7 @@ public class ReferFragment extends Fragment {
         String referralName = mReferralName.getText().toString();
         String referralPhone = mReferralPhone.getText().toString();
         String referralRelation = mReferralRelation.getText().toString();
-        boolean isMandatoryFiledsFilled = (!TextUtils.isEmpty(patientName) && !TextUtils.isEmpty(patientPhone) && !TextUtils.isEmpty(referralName) && !TextUtils.isEmpty(referralPhone) && !TextUtils.isEmpty(referralRelation)) ? true : false;
+        boolean isMandatoryFiledsFilled = !TextUtils.isEmpty(patientName) && !TextUtils.isEmpty(patientPhone) && !TextUtils.isEmpty(referralName) && !TextUtils.isEmpty(referralPhone) && !TextUtils.isEmpty(referralRelation);
         WELogger.infoLog(TAG, "getDataFromUI() :: Mandatory fileds check : " + isMandatoryFiledsFilled);
         return isMandatoryFiledsFilled;
     }

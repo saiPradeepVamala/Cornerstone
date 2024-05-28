@@ -102,17 +102,15 @@ public abstract class AbstractHttpHelper {
                 }
             }
             setupRequest(request);
-            httpResult = getHttpResult(client.execute(request));
+//            httpResult = getHttpResult(client.execute(request));
             WELogger.infoLog(TAG, String.format("%s  doRequest(): Status code from server is = %s  ", this.getClass().getName(), String.valueOf(httpResult.statusCode)));
             WELogger.infoLog(TAG, String.format("%s  doRequest(): Response from server is = %s  ", this.getClass().getName(), httpResult.result));
             client.getConnectionManager().shutdown();
-        } catch (ClientProtocolException e) {
+        }
+        /*catch (ClientProtocolException e) {
             WELogger.errorLog(TAG, String.format("%s  ClientProtocolException: doRequest(): Error occurred while contacting server.  ", this.getClass().getName()), e);
             client.getConnectionManager().shutdown();
-        } catch (IOException exception) {
-            WELogger.errorLog(TAG, String.format("%s  IOException: doRequest(): Error occurred while contacting server.  ", this.getClass().getName()), exception);
-            client.getConnectionManager().shutdown();
-        } catch (Exception e) {
+        }*/ catch (Exception e) {
             WELogger.errorLog(TAG, String.format("%s  Exception: doRequest(): Error occurred while contacting server.  ", this.getClass().getName()), e);
             client.getConnectionManager().shutdown();
         }
@@ -132,6 +130,7 @@ public abstract class AbstractHttpHelper {
         return httpResult;
     }
 
+    /*
     public HttpResult postString(String url, HttpEntity data, Header[] headers) {
         WELogger.infoLog(WELogger.LOG_TAG, String.format("%s  HTTP type is: POST with Entity  ", this.getClass().getName()));
         HttpPost postRequest = new HttpPost();
@@ -143,5 +142,5 @@ public abstract class AbstractHttpHelper {
             exception.printStackTrace();
         }
         return doRequest(postRequest, url, headers);
-    }
+    }*/
 }

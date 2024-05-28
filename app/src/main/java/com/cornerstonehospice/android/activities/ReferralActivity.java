@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import com.cornerstonehospice.R;
+import com.cornerstonehospice.android.api.builders.ReferralBuilder;
 import com.cornerstonehospice.android.api.requests.ReferalDataRequest;
 import com.cornerstonehospice.android.json.ReferralBean;
 import com.we.common.api.data.results.DataResult;
@@ -118,10 +120,11 @@ public class ReferralActivity extends BaseActivity {
         } else if (id == R.id.menu_submit_referral) {
             if (isValidateData()) {
                 showSubmitDialog();
+                Log.d("ValidData","Data is valid");
             } else {
                 showLongToast(getString(R.string.makereferral_please_check_the_mandatory_fileds));
             }
-            //referralSubmission();
+//            referralSubmission();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -133,21 +136,12 @@ public class ReferralActivity extends BaseActivity {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle(R.string.make_referral_submit_title)
                 .setMessage(R.string.make_referral_submit_message)
-                .setPositiveButton(R.string.yes_button, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        checkMandatoryFields();
-                        referralSubmission();
-                    }
+                .setPositiveButton(R.string.yes_button, (arg0, arg1) -> {
+                    checkMandatoryFields();
+                    referralSubmission();
                 })
-                .setNegativeButton(R.string.no_button, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        /*DO_NOTHING*/
-                    }
-
+                .setNegativeButton(R.string.no_button, (dialog1, which) -> {
+                    /*DO_NOTHING*/
                 }).show();
     }
 
@@ -159,22 +153,18 @@ public class ReferralActivity extends BaseActivity {
 
         progressDialog = getProgressDialog(getString(R.string.makereferral_submitting_referral));
         ReferralBean referData = getDataFromUI();
-        if (referData != null) {
-            progressDialog.show();
-//            Not knowing what is ReferralBuilder();
-//            ReferalDataRequest request = new ReferalDataRequest();
-//            request.requestDelegate = new ReferralBuilder();
-//            request.requestType = ReferralBuilder.RequestType.postReferral;
+        progressDialog.show();
+//            Will send data via Retrofit API
+            ReferalDataRequest request = new ReferalDataRequest();
+            request.requestDelegate = new ReferralBuilder();
+//            request.requestType = ReferralBuilder.RequestType.postReferal;
 //            request.referral = referData;
 //            new DataApiAsyncTask(true, this, submissionHandler, null).execute(request);
-        } else {
-            showLongToast(getString(R.string.makereferral_please_check_the_mandatory_fileds));
-            progressDialog.dismiss();
-        }
+
 
     }
 
-    private final Handler submissionHandler = new Handler(Looper.getMainLooper()) {
+    private final Handler submissionHandler = new Handler() {
         @SuppressWarnings("unchecked")
         public void handleMessage(android.os.Message msg) {
             DataResult<ReferralBean> referralResult = (DataResult<ReferralBean>) msg.obj;

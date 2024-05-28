@@ -59,10 +59,8 @@ public class CriteriaListActivity extends BaseActivity implements AdapterView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id) {
-            case android.R.id.home:
-                onBackPressed();
-                break;
+        if (id == android.R.id.home) {
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }

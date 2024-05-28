@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 public class DataResult<T> {
-	public boolean successful;
+	public boolean successful = true;
 	public String result;
 	public int statusCode;
 	public T entity;
