@@ -32,7 +32,7 @@ public class CriteriaBuilder extends AppBuilder {
 	
 	
 	
-	public static enum RequestType implements IRequestType{
+	public enum RequestType implements IRequestType{
 		GET_CRITERIA;
 	}
 }
