@@ -41,18 +41,40 @@ import com.cornerstonehospice.android.activities.MainActivity;
 import com.cornerstonehospice.android.activities.PreviewActivity;
 import com.cornerstonehospice.android.activities.TakePictureActivity;
 import com.cornerstonehospice.android.api.builders.ReferralBuilder;
+import com.cornerstonehospice.android.api.builders.URLBuilder;
 import com.cornerstonehospice.android.api.requests.ReferalDataRequest;
+import com.cornerstonehospice.android.api.requests.ReferralRequestBody;
 import com.cornerstonehospice.android.json.ReferralBean;
 import com.cornerstonehospice.android.manager.SharedPreferenceManager;
 import com.cornerstonehospice.android.utils.AppConstants;
 import com.we.common.api.data.results.DataResult;
+import com.we.common.api.http.results.HttpResult;
 import com.we.common.async.DataApiAsyncTask;
+import com.we.common.builders.json.CommonJsonBuilder;
 import com.we.common.utils.WELogger;
 
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.ContentBody;
+import org.apache.http.entity.mime.content.InputStreamBody;
+
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ReferFragment extends Fragment {
 
@@ -182,24 +204,95 @@ public class ReferFragment extends Fragment {
     }
 
     private void SendDataAsEMail(byte[] imageData) {
-        ReferralBean referData = getDataFromUI();
+        ReferralRequestBody referData = getDataFromUI();
         ReferalDataRequest referralRequest = new ReferalDataRequest();
         if (imageBytes != null && imageBytes.length > 0) {
             referralRequest.imageBytes = imageBytes;
         } else {
             referralRequest.imageBytes = null;
         }
-        referralRequest.referalRequestBody.referralBean = referData;
+        referralRequest.referalRequestBody = referData;
         referralRequest.emailRecipient = AppConstants.CORNERSTONE_EMAIL_ID;
         referralRequest.requestDelegate = new ReferralBuilder();
         referralRequest.requestType = ReferralBuilder.RequestType.POST_REFERRAL;
         if (!referralRequest.emailRecipient.isEmpty()) {
-            new DataApiAsyncTask(true, getActivity(), referralApiHandler, null).execute(referralRequest);
+//            new DataApiAsyncTask(true, getActivity(), referralApiHandler, null).execute(referralRequest);     // Old way of calling API
+            postData(referralRequest);          // API call using Retrofit
         } else {
             Toast.makeText(getActivity(), "No email recipient.", Toast.LENGTH_SHORT).show();
         }
 
     }
+
+
+    private void postData(ReferalDataRequest request) {
+
+        // File to be uploaded
+        RequestBody fileBody = null;
+        if(request.imageBytes != null){
+            fileBody = RequestBody.create(MediaType.parse("image/jpg"), request.imageBytes);
+        }
+
+        String jsonStringRequest = null;
+        if(request.referalRequestBody != null){
+            jsonStringRequest = new com.google.gson.Gson().toJson(request.referalRequestBody);
+        }
+
+        OkHttpClient client = new OkHttpClient();
+
+        // Building the multipart request body
+        MultipartBody formBody;
+        if (fileBody != null) {
+            formBody = new MultipartBody.Builder()
+                        .setType(MultipartBody.FORM)
+                        .addFormDataPart("referral_email_body", jsonStringRequest)
+                        .addFormDataPart("referral_pic", "image"+System.currentTimeMillis(), fileBody)
+                        .addFormDataPart("Content-Type", "image/jpg")
+                        .addFormDataPart("filename", "myJpgFile.jpg")
+                        .build();
+        }else {
+            formBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("referral_email_body", jsonStringRequest)
+                    .addFormDataPart("Content-Type", "image/jpg")
+                    .addFormDataPart("filename", "myJpgFile.jpg")
+                    .build();
+        }
+
+        // Building the request
+        Request request1 = new Request.Builder()
+                .url(URLBuilder.getPostReferralDataUrl(request.emailRecipient))
+                .post(formBody)
+                .build();
+
+        // Making the request
+        client.newCall(request1).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+				progressDialog.dismiss();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    System.out.println("Upload successful: " + response.body().string());
+                    Toast.makeText(getActivity(), "Sent Referral successfully", Toast.LENGTH_LONG).show();
+                    saveDoctorDetailsToPrefs();
+                    clearUI();
+                    getDoctorDetailsFromPrefs();
+                    mPatientName.requestFocus();
+                    // Navigating to the main activity.
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    System.out.println("Upload failed: " + response.code());
+                }
+				progressDialog.dismiss();
+            }
+        });
+        }
+
 
     private final Handler referralApiHandler = new Handler(Looper.getMainLooper()) {
         public void handleMessage(@NonNull android.os.Message msg) {
@@ -332,11 +425,11 @@ public class ReferFragment extends Fragment {
         return isMandatoryFiledsFilled;
     }
 
-    private ReferralBean getDataFromUI() {
+    private ReferralRequestBody getDataFromUI() {
 
-        ReferralBean referalBean = null;
-        referalBean = new ReferralBean();
-        referalBean.id = "5583dfb4d8f4a21a71ea1087";             //Fixme : Why is this static?
+//        ReferralBean referalBean = null;
+        ReferralRequestBody referalBean = new ReferralRequestBody();
+//        referalBean.id = "5583dfb4d8f4a21a71ea1087";             //Fixme : Why is this static?
         referalBean.patientName = mPatientName.getText().toString();
         referalBean.patientPhone = mPatientPhone.getText().toString();
         referalBean.patientDiagnosis = mPatientDiagnosis.getText().toString();

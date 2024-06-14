@@ -13,7 +13,6 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.cornerstonehospice.R;
 import com.cornerstonehospice.android.adapters.ExpandableListAdapter;
@@ -26,6 +25,7 @@ import com.we.common.utils.WELogger;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +42,7 @@ public class CriteriaListFragment extends ScrollTabHolderFragment implements OnS
     private String TAG = CriteriaListFragment.class.getName();
 
     private int mPosition;
+    private String payload;
 
     public static Fragment newInstance(int position) {
         CriteriaListFragment f = new CriteriaListFragment();
@@ -101,8 +102,8 @@ public class CriteriaListFragment extends ScrollTabHolderFragment implements OnS
     }
 
     private void prepareListData() {
-
-        String payload = ((CornerStoneApplication) requireActivity().getApplication()).getParsedCriteria();
+        payload = loadJSONFromAsset(requireActivity());
+//        payload = ((CornerStoneApplication) requireActivity().getApplication()).getParsedCriteria();
         WELogger.infoLog(TAG, "onCreateView() :: Parsed criteria String ; " + payload);
         CriteriaDataResult criteriaList = (CommonJsonBuilder.getEntityForJson(payload, CriteriaDataResult.class));
         if (criteriaList != null) {
@@ -116,6 +117,25 @@ public class CriteriaListFragment extends ScrollTabHolderFragment implements OnS
         }else{
             Log.d("LISTYI","NULL");
         }
+    }
+
+
+    /**
+     * Function to parse a local json file from assets
+     */
+    private String loadJSONFromAsset(Context context) {
+        String json = null;
+        try {
+            InputStream is = context.getAssets().open("criteria_results.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return json;
     }
 
 
