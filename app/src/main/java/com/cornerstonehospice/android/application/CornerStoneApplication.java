@@ -1,9 +1,11 @@
 package com.cornerstonehospice.android.application;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -25,6 +27,7 @@ import com.we.common.utils.WELogger;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.Thread.State;
+import java.util.Objects;
 import java.util.Properties;
 /**
  * Application class which will load at the time of launch of application, 
@@ -49,14 +52,18 @@ public class CornerStoneApplication extends Application {
 	}
 
 
-//
-//	private Handler criteriaAPIHandler = new Handler(){
-//		public void handleMessage(android.os.Message msg) {
-//			DataResult<CriteriaDataResult> criteriaResults	=	(DataResult<CriteriaDataResult>)msg.obj;
-//			String str = new CommonJsonBuilder().getJsonForEntity(criteriaResults.entity);
-//			mCriteriaString	=	"Hello All";
-//		}
-//	};
+
+	private Handler criteriaAPIHandler = new Handler(){
+		public void handleMessage(android.os.Message msg) {
+			if(msg.obj != null){
+				DataResult<CriteriaDataResult> criteriaResults	= (DataResult<CriteriaDataResult>)msg.obj;
+				String str = new CommonJsonBuilder().getJsonForEntity(criteriaResults.entities);
+				mCriteriaString	=	str;
+			}else{
+				Log.d("msg_obj", "msg_obj is null");
+			}
+		}
+	};
 
 
 	public String getParsedCriteria(){
@@ -73,7 +80,7 @@ public class CornerStoneApplication extends Application {
 		CriteriaDataRequest contactRequest 		= 		new CriteriaDataRequest(getApplicationContext());
 		contactRequest.requestDelegate 			= 		new CriteriaBuilder();
 		contactRequest.requestType 				= 		CriteriaBuilder.RequestType.GET_CRITERIA;
-//		new DataApiAsyncTask(true, this, criteriaAPIHandler, null).execute(contactRequest);
+		new DataApiAsyncTask(true, this, criteriaAPIHandler, null).execute(contactRequest);
 
 	}
 
