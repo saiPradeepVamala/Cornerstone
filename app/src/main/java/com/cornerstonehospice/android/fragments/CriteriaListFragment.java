@@ -13,7 +13,6 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.cornerstonehospice.R;
 import com.cornerstonehospice.android.adapters.ExpandableListAdapter;
@@ -21,17 +20,9 @@ import com.cornerstonehospice.android.api.results.Criteria;
 import com.cornerstonehospice.android.api.results.CriteriaDataResult;
 import com.cornerstonehospice.android.application.CornerStoneApplication;
 import com.newsstand.ScrollTabHolderFragment;
-import com.we.common.api.data.results.DataResult;
 import com.we.common.builders.json.CommonJsonBuilder;
 import com.we.common.utils.WELogger;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -51,6 +42,7 @@ public class CriteriaListFragment extends ScrollTabHolderFragment implements OnS
     private String TAG = CriteriaListFragment.class.getName();
 
     private int mPosition;
+    private String payload;
 
     public static Fragment newInstance(int position) {
         CriteriaListFragment f = new CriteriaListFragment();
@@ -110,9 +102,8 @@ public class CriteriaListFragment extends ScrollTabHolderFragment implements OnS
     }
 
     private void prepareListData() {
-
-          String payload = loadJSONFromAsset();
-//        String payload = ((CornerStoneApplication) requireActivity().getApplication()).getParsedCriteria();
+        payload = loadJSONFromAsset(requireActivity());
+//        payload = ((CornerStoneApplication) requireActivity().getApplication()).getParsedCriteria();
         WELogger.infoLog(TAG, "onCreateView() :: Parsed criteria String ; " + payload);
         CriteriaDataResult criteriaList = (CommonJsonBuilder.getEntityForJson(payload, CriteriaDataResult.class));
         if (criteriaList != null) {
@@ -126,6 +117,25 @@ public class CriteriaListFragment extends ScrollTabHolderFragment implements OnS
         }else{
             Log.d("LISTYI","NULL");
         }
+    }
+
+
+    /**
+     * Function to parse a local json file from assets
+     */
+    private String loadJSONFromAsset(Context context) {
+        String json = null;
+        try {
+            InputStream is = context.getAssets().open("criteria_results.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return json;
     }
 
 
@@ -154,24 +164,6 @@ public class CriteriaListFragment extends ScrollTabHolderFragment implements OnS
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         // nothing
-    }
-
-    /**
-     * Function to parse a local json file from assets
-     */
-    private String loadJSONFromAsset() {
-        String json = null;
-        try {
-            InputStream is = requireActivity().getAssets().open("server_response/criteria_results.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, StandardCharsets.UTF_8);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return json;
     }
 
 }

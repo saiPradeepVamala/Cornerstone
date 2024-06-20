@@ -7,5 +7,15 @@ import com.cornerstonehospice.android.json.ReferralBean;
  */
 public class ReferralRequestBody {
 
-    public ReferralBean referralBean;
+//    public String id;
+    public String patientName;
+    public String patientPhone;
+    public String patientDiagnosis;
+    public String referralName;
+    public String referralPhone;
+    public String referralRelationToPatient;
+    public String additionalNotes;
+    public boolean canCall;
+//    public boolean isDeleted;
+//    public ReferralBean referralBean;
 }

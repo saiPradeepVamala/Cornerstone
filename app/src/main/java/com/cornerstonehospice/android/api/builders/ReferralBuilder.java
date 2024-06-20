@@ -3,7 +3,7 @@ package com.cornerstonehospice.android.api.builders;
 import android.util.Log;
 
 import com.cornerstonehospice.android.api.requests.ReferalDataRequest;
-import com.cornerstonehospice.android.json.ReferralBean;
+import com.cornerstonehospice.android.api.requests.ReferralRequestBody;
 import com.we.common.api.data.request.BaseDelegatorRequest;
 import com.we.common.api.data.request.IRequestType;
 import com.we.common.api.data.results.DataResult;
@@ -34,7 +34,7 @@ public class ReferralBuilder extends AppBuilder {
         return null;
     }
 	
-	public DataResult<ReferralBean> postReferral(ReferalDataRequest request){
+	public DataResult<ReferralRequestBody> postReferral(ReferalDataRequest request){
 
 		MultipartEntity multipartEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
 		ContentBody bodyStr = null;
@@ -43,11 +43,11 @@ public class ReferralBuilder extends AppBuilder {
 			cbFile = new InputStreamBody(new ByteArrayInputStream(request.imageBytes), "image/jpeg");
 			multipartEntity.addPart("referral_pic", cbFile);
 		}
-		bodyStr = new InputStreamBody(new ByteArrayInputStream(Objects.requireNonNull(CommonJsonBuilder.getJsonForEntity(request.referalRequestBody.referralBean)).getBytes()), "multipart/form-data");
+		bodyStr = new InputStreamBody(new ByteArrayInputStream(Objects.requireNonNull(CommonJsonBuilder.getJsonForEntity(request.referalRequestBody)).getBytes()), "multipart/form-data");
 		multipartEntity.addPart("referral_email_body", bodyStr);
 
 		HttpResult httpResult 				= 	httpHelper.postString(URLBuilder.getPostReferralDataUrl(request.emailRecipient), multipartEntity.toString(), null);
-		DataResult<ReferralBean> result	= 	new DataResult<ReferralBean>();
+		DataResult<ReferralRequestBody> result	= 	new DataResult<ReferralRequestBody>();
 		result.successful					= 	isResultOk(httpResult);
 		WELogger.infoLog(TAG, "createMultipartAndPost :: Reponse on posting : " + result.successful);
 

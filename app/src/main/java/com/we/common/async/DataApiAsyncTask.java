@@ -57,13 +57,12 @@ public class DataApiAsyncTask extends AbstractDataApiAsyncTask {
 			Toast.makeText(mContext, mContext.getText(stringId), Toast.LENGTH_SHORT).show();
 	}
 
-	/*
 	@Override
 	protected DataResult<?> doInBackground(BaseDelegatorRequest... params) {
 		super.doInBackground(params);
 		if (params == null || params[0] == null) return null;
 		return params[0].requestDelegate.execute(params[0]);
-	}*/
+	}
 
 	@Override
 	protected void onPostExecute(DataResult<?> result) {
